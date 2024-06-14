@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HelloWorldController {
 
+    // internationalization - i18n
     private MessageSource messageSource;
+
+    public HelloWorldController(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     // /hello-world
 
