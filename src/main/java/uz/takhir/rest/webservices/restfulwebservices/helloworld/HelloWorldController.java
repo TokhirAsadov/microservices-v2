@@ -1,10 +1,13 @@
 package uz.takhir.rest.webservices.restfulwebservices.helloworld;
 
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.*;
 
 //Rest API
 @RestController
 public class HelloWorldController {
+
+    private MessageSource messageSource;
 
     // /hello-world
 
@@ -26,4 +29,11 @@ public class HelloWorldController {
     public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
         return new HelloWorldBean("Hello "+name);
     }
+
+    @GetMapping("/hello-world-internationalized")
+    public String helloWorldInternationalized() {
+        return "Hello World V2!";
+    }
 }
+
+// internationalization - i18n
