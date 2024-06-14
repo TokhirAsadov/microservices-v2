@@ -1,7 +1,10 @@
 package uz.takhir.rest.webservices.restfulwebservices.helloworld;
 
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Locale;
 
 //Rest API
 @RestController
@@ -37,7 +40,9 @@ public class HelloWorldController {
 
     @GetMapping("/hello-world-internationalized")
     public String helloWorldInternationalized() {
-        return "Hello World V2!";
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage("good.morning.message",null,"Default Message",locale);
+        //return "Hello World V2!";
     }
 }
 
