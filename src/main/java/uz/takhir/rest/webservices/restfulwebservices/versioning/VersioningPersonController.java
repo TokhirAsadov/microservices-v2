@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VersioningPersonController {
 
-
+    // URI Versioning - Twitter
     @GetMapping("/v1/person")
     public PersonV1 getFirstVersionOfPerson(){
         return new PersonV1("Tom Cruse");
@@ -18,6 +18,7 @@ public class VersioningPersonController {
         return new PersonV2(new Name("Tom","Cruse"));
     }
 
+    // Request Parameter versioning - Amazon
     @GetMapping(value = "/person",params = "version=1")
     public PersonV1 getFirstVersionOfPersonRequestParam(){
         return new PersonV1("Tom Cruse");
@@ -27,4 +28,6 @@ public class VersioningPersonController {
     public PersonV2 getSecondVersionOfPersonRequestParam(){
         return new PersonV2(new Name("Tom","Cruse"));
     }
+
+
 }
