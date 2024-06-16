@@ -45,4 +45,9 @@ public class VersioningPersonController {
     public PersonV1 getFirstVersionOfPersonRequestAccept(){
         return new PersonV1("Tom Cruse");
     }
+
+    @GetMapping(value = "/person/accept",produces = "application/vnd.company.app-v2+json")
+    public PersonV2 getSecondVersionOfPersonRequestAccept(){
+        return new PersonV2(new Name("Tom","Cruse"));
+    }
 }
