@@ -29,5 +29,9 @@ public class VersioningPersonController {
         return new PersonV2(new Name("Tom","Cruse"));
     }
 
-
+    // (Custom) headers versioning - Microsoft
+    @GetMapping(value = "/person",headers = "X-API-VERSION=1")
+    public PersonV1 getFirstVersionOfPersonRequestHeader(){
+        return new PersonV1("Tom Cruse");
+    }
 }
