@@ -1,6 +1,8 @@
 package uz.takhir.rest.webservices.restfulwebservices.user;
 
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,6 +15,7 @@ import java.util.List;
 public class UserResource {
 
     private UserDaoService service;
+//    private
 
     public UserResource(UserDaoService service){
         this.service = service;
@@ -23,13 +26,21 @@ public class UserResource {
         return service.findAll();
     }
 
+    //EntityModel
+    //WebMvcLinkBuilder
     @GetMapping("/users/{id}")
-    public User retrieveUser(@PathVariable Integer id) {
+    public EntityModel<User> retrieveUser(@PathVariable Integer id) {
         User user = service.findById(id);
         if (user == null) {
             throw new UserNotFoundException("id: "+ id);
         }
-        return service.findById(id);
+
+        EntityModel<User> entityModel = EntityModel.of(user);
+
+        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+        entityModel.add(link.withRel("all-users")); // nom berish qo`shilgan linkga
+
+        return entityModel;
     }
 
     @DeleteMapping("/users/{id}")
