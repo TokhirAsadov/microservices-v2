@@ -27,7 +27,7 @@ public class FilteringController {
     }
 
 
-    @GetMapping("/v2/filtering")
+    @GetMapping("/v2/filtering") // dynamic filtering
     public MappingJacksonValue filteringV2(){
         SomeBeanForDynamicFiltering someBean = new SomeBeanForDynamicFiltering("value1", "value2", "value3");
 
