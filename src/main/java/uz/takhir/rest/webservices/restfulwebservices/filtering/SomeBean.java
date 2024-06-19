@@ -1,7 +1,11 @@
 package uz.takhir.rest.webservices.restfulwebservices.filtering;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class SomeBean {
     private String value1;
+
+    @JsonIgnore
     private String value2;
     private String value3;
 
