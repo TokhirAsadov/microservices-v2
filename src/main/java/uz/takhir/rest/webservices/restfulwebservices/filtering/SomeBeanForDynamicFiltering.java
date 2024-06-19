@@ -1,7 +1,9 @@
 package uz.takhir.rest.webservices.restfulwebservices.filtering;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+
+@JsonFilter("SomeBeanForDynamicFilteringFilter")
 public class SomeBeanForDynamicFiltering {
     private String field1;
     private String field2;
